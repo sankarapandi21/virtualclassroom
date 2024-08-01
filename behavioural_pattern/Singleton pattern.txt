@@ -1,0 +1,37 @@
+// Singleton pattern
+public class DatabaseConnection {
+    // Static variable to hold the single instance
+    private static DatabaseConnection instance;
+
+    // Private constructor to prevent instantiation
+    private DatabaseConnection() {
+        System.out.println("Database connection created.");
+    }
+
+    // Public method to provide access to the instance
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+
+    // Example method
+    public void connect() {
+        System.out.println("Connecting to the database...");
+    }
+}
+
+// Test the Singleton pattern
+public class Main {
+    public static void main(String[] args) {
+        DatabaseConnection connection1 = DatabaseConnection.getInstance();
+        connection1.connect();
+
+        DatabaseConnection connection2 = DatabaseConnection.getInstance();
+        connection2.connect();
+
+        // Both connection1 and connection2 should be the same instance
+        System.out.println("Are both connections the same instance? " + (connection1 == connection2));
+    }
+}
